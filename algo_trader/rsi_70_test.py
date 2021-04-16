@@ -1,7 +1,8 @@
 # %%
-import pandas as pd
 import binance_client as cl
+import pandas as pd
 import pandas_ta as ta
+import numpy as np
 import matplotlib.pyplot as plt
 plt.style.use("fivethirtyeight")
 
@@ -43,4 +44,47 @@ plt.ylabel("BTC close prices(USD)")
 plt.legend(loc = "upper left")
 plt.show()
 
+# %%
+results = pd.DataFrame()
+results['BTC'] = data["Close"]
+results['SMA 9'] = sma_9["Close"]
+results['SMA 100'] = sma_100["Close"]
+results['RSI 14'] = rsi_14["Close"]
+results
+# %%
+def decision(data) : 
+    signal_price_buy = []
+    signal_price_sell = []
+    nextOrder = "buy"
+
+    for i in range(len(data)) : 
+        if (data["BTC"][i] > data["SMA 100"][i] and data["RSI 14"][i] > 70) : 
+            if (nextOrder == "buy") : 
+                signal_price_buy.append(data["BTC"][i])
+                signal_price_sell.append(np.nan)
+                nextOrder = "sell"
+            else : 
+                signal_price_buy.append(np.nan)
+                signal_price_sell.append(np.nan)
+        
+        elif (data["BTC"][i] < data["SMA 9"][i] or data["SMA 9"][i] < data["SMA 100"][i]) : 
+            if (nextOrder == "sell") : 
+                signal_price_buy.append(np.nan)
+                signal_price_sell.append(data["BTC"][i])
+                nextOrder = "buy"
+            else : 
+                signal_price_buy.append(np.nan)
+                signal_price_sell.append(np.nan)
+        
+        else :
+            signal_price_buy.append(np.nan)
+            signal_price_sell.append(np.nan)
+
+    return (signal_price_buy, signal_price_sell)
+# %%
+decisions = decision(results)
+results["Buy Signal"] = decisions[0]
+results["Sell Signal"] = decisions[1]
+# %%
+results
 # %%

@@ -30,6 +30,7 @@ sma_100
 rsi_14 = pd.DataFrame()
 rsi_14["Close"] = ta.rsi(data["Close"], 14)
 rsi_14
+
 # %%
 plt.figure(figsize=(12.5, 4.5))
 plt.plot(data["Close"], label = "BTC - BUSD")
@@ -41,3 +42,5 @@ plt.xlabel(data.iloc[0]["Close time"] + " between " + data.iloc[-1]["Close time"
 plt.ylabel("BTC close prices(USD)")
 plt.legend(loc = "upper left")
 plt.show()
+
+# %%

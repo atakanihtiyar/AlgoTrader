@@ -1,14 +1,14 @@
 # To add a new cell, type '# %%'
 # To add a new markdown cell, type '# %% [markdown]'
 # %%
-import config
+import api_info
 import pandas as pd
 import os.path
 from os import path
 from binance.client import Client
 
 # %%
-client = Client(config.api_key, config.api_secret)
+client = Client(api_info.key, api_info.secret)
 
 # %%
 def save_historical_candles(symbol, interval, start_time, end_time) :
@@ -31,7 +31,7 @@ def save_historical_candles(symbol, interval, start_time, end_time) :
 def get_historical_candles(symbol, interval, start_time, end_time) : 
     file_name = symbol + "_" + interval + "_" + start_time + "_" + end_time + ".csv"
     if ( path.exists(file_name) ) : 
-        data = read_from_csv(file_name)
+        data = pd.read_csv(file_name)
         return data
     else : 
         data = save_historical_candles(symbol, interval, start_time, end_time) 

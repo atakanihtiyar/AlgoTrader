@@ -22,3 +22,7 @@ def save_historical_candles(symbol, interval, start_time, end_time) :
     data['Close time'] = pd.to_datetime(data['Close time'], unit='ms')
     data['Open time'] = pd.to_datetime(data['Open time'], unit='ms')
     data.to_csv(file_name, encoding='utf-8')
+
+    return(data)
+
+# %%

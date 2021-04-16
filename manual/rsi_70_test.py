@@ -7,3 +7,5 @@ plt.style.use("fivethirtyeight")
 # %%
 data = read_from_csv("BTCBUSD_2h.csv")
 data.head()
+
+# %%

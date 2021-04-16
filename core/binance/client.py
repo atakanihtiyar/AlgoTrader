@@ -31,7 +31,7 @@ def save_historical_candles(symbol, interval, start_time, end_time) :
 def get_historical_candles(symbol, interval, start_time, end_time) : 
     file_name = symbol + "_" + interval + "_" + start_time + "_" + end_time + ".csv"
     if ( path.exists(file_name) ) : 
-        data = read_from_csv("BTCBUSD_2h.csv")
+        data = read_from_csv(file_name)
         return data
     else : 
         data = save_historical_candles(symbol, interval, start_time, end_time) 

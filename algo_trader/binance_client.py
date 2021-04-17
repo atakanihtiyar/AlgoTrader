@@ -12,7 +12,7 @@ client = Client(api_info.key, api_info.secret)
 
 # %%
 def save_historical_candles(symbol, interval, start_time, end_time) :
-    file_name = symbol + "_" + interval + "_" + start_time + "_" + end_time + ".csv"
+    file_name = "resource/" + symbol + "_" + interval + "_" + start_time + "_" + end_time + ".csv"
     
     columns_name = ["Open time", "Open", "High", "Low", "Close", "Volume", "Close time", 
             "Quote asset volume", "Number of trades", "Taker buy base asset volume", 
@@ -29,7 +29,7 @@ def save_historical_candles(symbol, interval, start_time, end_time) :
 
 # %%
 def get_historical_candles(symbol, interval, start_time, end_time) : 
-    file_name = symbol + "_" + interval + "_" + start_time + "_" + end_time + ".csv"
+    file_name = "resource/" + symbol + "_" + interval + "_" + start_time + "_" + end_time + ".csv"
     if ( path.exists(file_name) ) : 
         data = pd.read_csv(file_name)
         return data

@@ -91,13 +91,13 @@ results["Sell Signal"] = decisions[1]
 results
 
 # %%
-plt.figure(figsize=(100, 25))
+plt.figure(figsize=(600, 100))
 plt.plot(data["Close"], label = "BTC - BUSD")
 plt.plot(sma_9["Close"], label = "SMA 9")
 plt.plot(sma_100["Close"], label = "SMA 100")
 plt.plot(rsi_14["Close"], label = "RSI 14")
-plt.scatter(results.index, results["Buy Signal"], label = "Buy", marker = "^", color = "green")
-plt.scatter(results.index, results["Sell Signal"], label = "Sell", marker = "v", color = "red")
+plt.scatter(results.index, results["Buy Signal"], s = 250.0, label = "Buy", marker = "^", color = "green")
+plt.scatter(results.index, results["Sell Signal"], s = 250.0, label = "Sell", marker = "v", color = "red")
 plt.title("")
 plt.xlabel(data.iloc[0]["Close time"] + " between " + data.iloc[-1]["Close time"])
 plt.ylabel("BTC close prices(USD)")

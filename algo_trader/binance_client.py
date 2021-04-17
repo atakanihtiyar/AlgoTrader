@@ -35,5 +35,8 @@ def get_historical_candles(symbol, interval, start_time, end_time) :
         return data
     else : 
         data = save_historical_candles(symbol, interval, start_time, end_time) 
+        data = pd.read_csv(file_name)
         return data
+# %%
+
 # %%

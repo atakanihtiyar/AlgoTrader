@@ -1,3 +1,3 @@
 # AlgoTrader
 
-This repo a algorithmic trading bot study.
+This repo is a algorithmic trading bot study.
